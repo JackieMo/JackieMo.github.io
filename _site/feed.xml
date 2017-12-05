@@ -5,8 +5,8 @@
     <description>读万卷书 行万里路</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 02 Dec 2017 11:43:53 +0800</pubDate>
-    <lastBuildDate>Sat, 02 Dec 2017 11:43:53 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Dec 2017 20:27:34 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Dec 2017 20:27:34 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -19,6 +19,31 @@
 
 &lt;h3 id=&quot;用jekyll搭建的github-pages个人博客&quot;&gt;用Jekyll搭建的Github Pages个人博客&lt;/h3&gt;
 
+&lt;h4 id=&quot;一github上新建项目-usernamegithubio-并克隆到本地&quot;&gt;一、GitHub上新建项目 (username).github.io 并克隆到本地&lt;/h4&gt;
+
+&lt;h4 id=&quot;二安装本地jekyll环境步骤&quot;&gt;二、安装本地Jekyll环境步骤&lt;/h4&gt;
+
+&lt;p&gt;打开终端，执行 sudo gem install jekyll。
+cd到项目根目录，安装bundle（sudo gem install bundle）, 再执行 bundle install。
+开启jekyll环境， bundle exec jekyll serve。
+在浏览器中输入&lt;a href=&quot;http://127.0.0.1:4000/&quot;&gt;http://127.0.0.1:4000/&lt;/a&gt;，即可看到博客了。&lt;/p&gt;
+
+&lt;h4 id=&quot;三绑定个人域名&quot;&gt;三、绑定个人域名&lt;/h4&gt;
+
+&lt;p&gt;在代码仓库中新建文件 CNAME，不带后缀名。填入域名（mozj.info)，域名是在&lt;a href=&quot;https://sg.godaddy.com/&quot;&gt;godaddy&lt;/a&gt;上买的。&lt;/p&gt;
+
+&lt;h4 id=&quot;四域名解析&quot;&gt;四、域名解析&lt;/h4&gt;
+
+&lt;p&gt;可以用dnspod&lt;/p&gt;
+
+&lt;h4 id=&quot;五评论功能&quot;&gt;五、评论功能&lt;/h4&gt;
+
+&lt;p&gt;用的是&lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt;。
+setting -&amp;gt; add disqus to site -&amp;gt; start using engage -&amp;gt; 设置自己的disqus url。&lt;/p&gt;
+
+&lt;h4 id=&quot;六图片存储&quot;&gt;六、图片存储&lt;/h4&gt;
+
+&lt;p&gt;可以用七牛&lt;/p&gt;
 </description>
         <pubDate>Sat, 02 Dec 2017 10:11:24 +0800</pubDate>
         <link>http://localhost:4000/2017/12/Hi/</link>

@@ -160,6 +160,31 @@
 
 <h3 id="用jekyll搭建的github-pages个人博客">用Jekyll搭建的Github Pages个人博客</h3>
 
+<h4 id="一github上新建项目-usernamegithubio-并克隆到本地">一、GitHub上新建项目 (username).github.io 并克隆到本地</h4>
+
+<h4 id="二安装本地jekyll环境步骤">二、安装本地Jekyll环境步骤</h4>
+
+<p>打开终端，执行 sudo gem install jekyll。
+cd到项目根目录，安装bundle（sudo gem install bundle）, 再执行 bundle install。
+开启jekyll环境， bundle exec jekyll serve。
+在浏览器中输入<a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a>，即可看到博客了。</p>
+
+<h4 id="三绑定个人域名">三、绑定个人域名</h4>
+
+<p>在代码仓库中新建文件 CNAME，不带后缀名。填入域名（mozj.info)，域名是在<a href="https://sg.godaddy.com/">godaddy</a>上买的。</p>
+
+<h4 id="四域名解析">四、域名解析</h4>
+
+<p>可以用dnspod</p>
+
+<h4 id="五评论功能">五、评论功能</h4>
+
+<p>用的是<a href="https://disqus.com/">disqus</a>。
+setting -&gt; add disqus to site -&gt; start using engage -&gt; 设置自己的disqus url。</p>
+
+<h4 id="六图片存储">六、图片存储</h4>
+
+<p>可以用七牛</p>
 
   </section>
 </article>
@@ -180,7 +205,7 @@
         this.page.identifier = "/2017/12/Hi/";
     };
 
-    var disqus_shortname = 'vno-jekyll';
+    var disqus_shortname = 'mozj';
     
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');

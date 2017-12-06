@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>First Article</title>
-  <meta name="description" content="new blog new article!!!">
+  <title>Mac配置RN开发环境</title>
+  <meta name="description" content="一、安装 node、watchman、react-native-cli。在Mac上我们可以通过HomeBrew进行相关的安装。">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="First Article">
-  <meta name="twitter:description" content="new blog new article!!!">
+  <meta name="twitter:title" content="Mac配置RN开发环境">
+  <meta name="twitter:description" content="一、安装 node、watchman、react-native-cli。在Mac上我们可以通过HomeBrew进行相关的安装。">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="First Article">
-  <meta property="og:description" content="new blog new article!!!">
+  <meta property="og:title" content="Mac配置RN开发环境">
+  <meta property="og:description" content="一、安装 node、watchman、react-native-cli。在Mac上我们可以通过HomeBrew进行相关的安装。">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2017/12/Hi/">
+  <link rel="canonical" href="http://localhost:4000/2017/12/RN/">
   <link rel="alternate" type="application/rss+xml" title="JackieMo" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -146,63 +146,27 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-12-02 10:11:24 +0800" itemprop="datePublished" class="post-meta__date date">2017-12-02</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2017-12-06 09:05:14 +0800" itemprop="datePublished" class="post-meta__date date">2017-12-06</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">First Article</h1>
+    <h1 class="post-title">Mac配置RN开发环境</h1>
   </header>
 
   <section class="post">
-    <h3 id="new-blog-new-article">new blog new article!!!</h3>
+    <h3 id="一安装-nodewatchmanreact-native-cli在mac上我们可以通过homebrew进行相关的安装">一、安装 node、watchman、react-native-cli。在Mac上我们可以通过<a href="https://brew.sh/">HomeBrew</a>进行相关的安装。</h3>
 
-<p>忙了一段时间后，终于闲下来了。
-没事逛逛大牛的技术博客，比起自己之前配置的Hexo, 发现更喜欢喵神的博客样式。
-于是心血来潮重新搭了一个新的博客，在这里要感谢喵神在github上的提供的主题<a href="https://github.com/onevcat/vno-jekyll">Vno-Jekyll</a>。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1. brew install node
+2. brew install watchman
+3. brew install flow
+4. npm install -g react-native-cli
+</code></pre>
+</div>
 
-<h3 id="用jekyll搭建的github-pages个人博客">用Jekyll搭建的Github Pages个人博客</h3>
+<h3 id="二ios-开发环境搭建">二、ios 开发环境搭建</h3>
 
-<h4 id="一github上新建项目">一、GitHub上新建项目</h4>
-<ul>
-  <li>项目名：(username).github.io ，克隆到本地</li>
-</ul>
-
-<h4 id="二安装本地jekyll环境步骤">二、安装本地Jekyll环境步骤</h4>
-
-<ul>
-  <li>
-    <p>打开终端，执行 sudo gem install jekyll</p>
-  </li>
-  <li>
-    <p>cd到项目根目录，安装bundle（sudo gem install bundle）, 再执行 bundle install</p>
-  </li>
-  <li>
-    <p>开启jekyll环境， bundle exec jekyll serve</p>
-  </li>
-  <li>
-    <p>在浏览器中输入<a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a>，即可看到博客了。</p>
-  </li>
-</ul>
-
-<h4 id="三绑定个人域名">三、绑定个人域名</h4>
-
-<ul>
-  <li>在代码仓库中新建文件 CNAME，不带后缀名</li>
-  <li>填入域名（mozj.info)，域名是在<a href="https://sg.godaddy.com/">godaddy</a>上买的</li>
-</ul>
-
-<h4 id="四域名解析">四、域名解析</h4>
-
-<p>可以用dnspod</p>
-
-<h4 id="五评论功能">五、评论功能</h4>
-
-<ul>
-  <li>用的是<a href="https://disqus.com/">disqus</a>。</li>
-  <li>setting -&gt; add disqus to site -&gt; start using engage -&gt; 设置自己的disqus url</li>
-</ul>
-
-<h4 id="六图片存储">六、图片存储</h4>
-
-<p>可以用七牛</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1. react-native init AwesomeProject 
+2. cd AwesomeProject
+</code></pre>
+</div>
 
 
   </section>
@@ -211,14 +175,14 @@
 <section class="read-more">
    
    
+   
+   
    <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2017/12/RN/" title="link to Mac配置RN开发环境">Mac配置RN开发环境</a></h2>
-       <p class="excerpt">一、安装 node、watchman、react-native-cli。在Mac上我们可以通过HomeBrew进行相关的安装。1. brew install node2. brew install watchman3. brew install flow4. npm install -g react-native-cli二、ios 开发环境搭建1. react-native init AwesomeProject 2. cd AwesomeProject&hellip;</p>
-       <div class="post-list__meta"><time datetime="2017-12-06 09:05:14 +0800" class="post-list__meta--date date">2017-12-06</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/12/RN/>继续阅读</a></div>
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/12/Hi/" title="link to First Article">First Article</a></h2>
+       <p class="excerpt">new blog new article!!!忙了一段时间后，终于闲下来了。没事逛逛大牛的技术博客，比起自己之前配置的Hexo, 发现更喜欢喵神的博客样式。于是心血来潮重新搭了一个新的博客，在这里要感谢喵神在github上的提供的主题Vno-Jekyll。用Jekyll搭建的Github Pages个人博客一、GitHub上新建项目  项目名：(username).github.io ，克隆到本地二、安装本地Jekyll环境步骤      打开终端，执行 sudo gem install ...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-12-02 10:11:24 +0800" class="post-list__meta--date date">2017-12-02</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/12/Hi/>继续阅读</a></div>
    </div>
-   
-   
    
 </section>
 
@@ -228,8 +192,8 @@
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2017/12/Hi/";
-        this.page.identifier = "/2017/12/Hi/";
+        this.page.url = "http://localhost:4000/2017/12/RN/";
+        this.page.identifier = "/2017/12/RN/";
     };
 
     var disqus_shortname = 'mozj';

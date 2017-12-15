@@ -115,10 +115,17 @@ NSLayoutConstraint有两个方法。
 Example:
 
 ```
-NSLayoutConstraint constraintsWithVisualFormat:@"|-[button1]-[button2]-[textField(>=20)]-|"
-                                       options:0
-                                       metrics:metrics
-                                         views:views]
+_volumeImageView.translatesAutoresizingMaskIntoConstraints = NO;
+NSArray *imageViewConstrainH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-60-[_volumeImageView]-60-|" 
+                                                                       options:0 
+                                                                       metrics:0 
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstrainH];
+NSArray *imageViewConstaintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[_volumeImageView(150)]" 
+                                                                       options:0 
+                                                                       metrics:0
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstaintV];
 
 ```
 
@@ -139,7 +146,7 @@ NSLayoutConstraint constraintsWithVisualFormat:@"|-[button1]-[button2]-[textFiel
 - `[view]` 每个视图必须用[]包裹起来，否则语法错误。
 - `[view(>=44)]` 可以为每个视图设置一些属性或者关系，写一个紧跟view后的括号集合，支持宽高，优先级，和其它视图之间的关系。
 - `[view@20]` 可以设置视图的约束的优先级，以@开头，取值范围(0 1000]。
-- `[view1]-20-[view2]` 可以指定view之间的水平或者垂直间距，写在一对 - 即可。
+- `[view1]-20-[view2]` 可以指定view之间的水平或者垂直间距，写在 - 对 - 即可。
 - `[view1][view2]` 如果 - 省略则他们之间的距离为0。
 - `[flexibleButton(>=70,<=100)]` 多个条件之间用,连接并且之间不能有空格。
 

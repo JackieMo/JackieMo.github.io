@@ -23,7 +23,9 @@ date: 2017-12-06 10:05:14.000000000 +09:00
 
 Auto Layout 中约束对应的类为 NSLayoutConstraint，一个 NSLayoutConstraint 实例代表一条约束。
 
-NSLayoutConstraint有两个方法，我们主要介绍 constraintWithItem:也是最常用的：
+NSLayoutConstraint有两个方法。
+
+#### 第一种 constraintWithItem:也是最常用的：
 
 ```
 +(instancetype)constraintWithItem:(id)view1 
@@ -99,4 +101,59 @@ NSLayoutConstraint有两个方法，我们主要介绍 constraintWithItem:也是
 - 在设置宽和高这两个约束时，relatedBy参数使用的是 NSLayoutRelationGreaterThanOrEqual，而不是 NSLayoutRelationEqual。因为 Auto Layout 是相对布局，所以通常你不应该直接设置宽度和高度这种固定不变的值，除非你很确定视图的宽度或高度需要保持不变。
 
 
+#### 第二种，使用比较冷门的VFL(Visual Format Language)，本质是是基于自动布局(AutoLayout)。
 
+```
+
++ (NSArray<__kindof NSLayoutConstraint *> *)constraintsWithVisualFormat:(NSString *)format 
+                                                                options:(NSLayoutFormatOptions)opts 
+                                                                metrics:(nullable NSDictionary<NSString *,id> *)metrics 
+                                                                  views:(NSDictionary<NSString *, id> *)views;
+ 
+```
+
+Example:
+
+```
+NSLayoutConstraint constraintsWithVisualFormat:@"|-[button1]-[button2]-[textField(>=20)]-|"
+                                       options:0
+                                       metrics:metrics
+                                         views:views]
+
+```
+
+参数：
+
+- format：指定约束的格式。更多信息，在[Auto Layout Guide]()查看[Visual Format Language]()
+- opts：描述在视觉格式化字符串中的布局属性和方向
+- metrics：将出现在视觉格式化字符串的常量字典。字典的Keys必须是在出现在视觉格式化字符串的字符串类型，对应的values必须是NSNumber对象
+- views：出现的视觉格式化字符串的字典view，所有的Keys必须是使用在视觉格式化字符串的字符串类型，对应的values必须是view对象。
+- 返回值：一个约束组合的数组，像视觉格式化字符串描述的一样表述了在提供的视图和它们的父视图之间的关系。所有的约束以在视觉格式化字符串被指定的约束顺序一致。
+
+
+#### 实践
+
+- 每条约束格式字符串分水平(H，可省略)和垂直方向(V)。
+- `|` 代表父视图。
+- `-` 代表标准间距，两个子视图直接的值是8，与父视图之间的值是16。
+- `[view]` 每个视图必须用[]包裹起来，否则语法错误。
+- `[view(>=44)]` 可以为每个视图设置一些属性或者关系，写一个紧跟view后的括号集合，支持宽高，优先级，和其它视图之间的关系。
+- `[view@20]` 可以设置视图的约束的优先级，以@开头，取值范围(0 1000]。
+- `[view1]-20-[view2]` 可以指定view之间的水平或者垂直间距，写在一对 - 即可。
+- `[view1][view2]` 如果 - 省略则他们之间的距离为0。
+- `[flexibleButton(>=70,<=100)]` 多个条件之间用,连接并且之间不能有空格。
+
+#### 注意事项
+
+- 使用时，必须把view的`translatesAutoresizingMaskIntoConstraints`属性设置为NO，否则约束可能更预期不一致。这是一个历史遗留的问题，由于在`AutoLayout`诞生以前一直使用`Autoresizing`来控制布局
+- 重写`updateConstraints()`方法，在里面计算约束，然后调用`setNeedsUpdateConstraints()`触发更新约束。
+- 系统计算布局顺序:
+  - updateConstraints()
+  - layoutSubviews()
+  - drawRect(_:)
+
+系统计算布局顺序参考
+  ![](http://p0bkxzmll.bkt.clouddn.com/autolayout.png)
+  
+  参考链接：
+  [VFL深入浅出](http://blog.wangruofeng007.com/blog/2017/03/02/vflshen-ru-qian-chu/)

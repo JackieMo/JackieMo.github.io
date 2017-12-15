@@ -124,7 +124,7 @@ NSLayoutConstraint constraintsWithVisualFormat:@"|-[button1]-[button2]-[textFiel
 
 参数：
 
-- format：指定约束的格式。更多信息，在[Auto Layout Guide]()查看[Visual Format Language]()
+- format：指定约束的格式。更多信息，在[Auto Layout Guide](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/index.html)查看[Visual Format Language](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html)
 - opts：描述在视觉格式化字符串中的布局属性和方向
 - metrics：将出现在视觉格式化字符串的常量字典。字典的Keys必须是在出现在视觉格式化字符串的字符串类型，对应的values必须是NSNumber对象
 - views：出现的视觉格式化字符串的字典view，所有的Keys必须是使用在视觉格式化字符串的字符串类型，对应的values必须是view对象。

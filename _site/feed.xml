@@ -5,9 +5,34 @@
     <description>读万卷书 行万里路</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Dec 2017 16:35:35 +0800</pubDate>
-    <lastBuildDate>Fri, 15 Dec 2017 16:35:35 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Dec 2017 10:55:35 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Dec 2017 10:55:35 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>解决 iTunes 12.7 无法下载IPA包</title>
+        <description>&lt;p&gt;升级 iTunes 12.7 之后，发现没有了App Store，这也意味着不能下载IPA包了。要想下载IPA包，只能降级了。&lt;/p&gt;
+
+&lt;h3 id=&quot;降级步骤&quot;&gt;降级步骤&lt;/h3&gt;
+
+&lt;h4 id=&quot;1下载-itunes-1263&quot;&gt;1.下载 &lt;a href=&quot;https://support.apple.com/zh-tw/HT208079&quot;&gt;iTunes 12.6.3&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4 id=&quot;2关闭某些应用xcode&quot;&gt;2.关闭某些应用(Xcode)&lt;/h4&gt;
+
+&lt;h4 id=&quot;3安装-itunes-1263&quot;&gt;3.安装 iTunes 12.6.3&lt;/h4&gt;
+
+&lt;h4 id=&quot;4打开-itunes-后可能出现报错&quot;&gt;4.打开 iTunes 后可能出现报错&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/itunes_error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;解决方法：到 ~/Music 目录下删除 iTunes 目录，重新打开即可。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Dec 2017 09:39:14 +0800</pubDate>
+        <link>http://localhost:4000/2017/12/itunes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/itunes/</guid>
+        
+        
+      </item>
     
       <item>
         <title>NSLayoutConstraint</title>
@@ -29,7 +54,9 @@
 
 &lt;p&gt;Auto Layout 中约束对应的类为 NSLayoutConstraint，一个 NSLayoutConstraint 实例代表一条约束。&lt;/p&gt;
 
-&lt;p&gt;NSLayoutConstraint有两个方法，我们主要介绍 constraintWithItem:也是最常用的：&lt;/p&gt;
+&lt;p&gt;NSLayoutConstraint有两个方法。&lt;/p&gt;
+
+&lt;h4 id=&quot;第一种-constraintwithitem也是最常用的&quot;&gt;第一种 constraintWithItem:也是最常用的：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+(instancetype)constraintWithItem:(id)view1 
                         attribute:(NSLayoutAttribute)attr1 
@@ -108,8 +135,79 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h4 id=&quot;第二种使用比较冷门的vflvisual-format-language本质是是基于自动布局autolayout&quot;&gt;第二种，使用比较冷门的VFL(Visual Format Language)，本质是是基于自动布局(AutoLayout)。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++ (NSArray&amp;lt;__kindof NSLayoutConstraint *&amp;gt; *)constraintsWithVisualFormat:(NSString *)format 
+                                                                options:(NSLayoutFormatOptions)opts 
+                                                                metrics:(nullable NSDictionary&amp;lt;NSString *,id&amp;gt; *)metrics 
+                                                                  views:(NSDictionary&amp;lt;NSString *, id&amp;gt; *)views;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_volumeImageView.translatesAutoresizingMaskIntoConstraints = NO;
+NSArray *imageViewConstrainH = [NSLayoutConstraint constraintsWithVisualFormat:@&quot;H:|-60-[_volumeImageView]-60-|&quot; 
+                                                                       options:0 
+                                                                       metrics:0 
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstrainH];
+NSArray *imageViewConstaintV = [NSLayoutConstraint constraintsWithVisualFormat:@&quot;V:|-150-[_volumeImageView(150)]&quot; 
+                                                                       options:0 
+                                                                       metrics:0
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstaintV];
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;参数：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;format：指定约束的格式。更多信息，在&lt;a href=&quot;https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/index.html&quot;&gt;Auto Layout Guide&lt;/a&gt;查看&lt;a href=&quot;https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html&quot;&gt;Visual Format Language&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;opts：描述在视觉格式化字符串中的布局属性和方向&lt;/li&gt;
+  &lt;li&gt;metrics：将出现在视觉格式化字符串的常量字典。字典的Keys必须是在出现在视觉格式化字符串的字符串类型，对应的values必须是NSNumber对象&lt;/li&gt;
+  &lt;li&gt;views：出现的视觉格式化字符串的字典view，所有的Keys必须是使用在视觉格式化字符串的字符串类型，对应的values必须是view对象。&lt;/li&gt;
+  &lt;li&gt;返回值：一个约束组合的数组，像视觉格式化字符串描述的一样表述了在提供的视图和它们的父视图之间的关系。所有的约束以在视觉格式化字符串被指定的约束顺序一致。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;实践&quot;&gt;实践&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;每条约束格式字符串分水平(H，可省略)和垂直方向(V)。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; 代表父视图。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; 代表标准间距，两个子视图直接的值是8，与父视图之间的值是16。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[view]&lt;/code&gt; 每个视图必须用[]包裹起来，否则语法错误。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[view(&amp;gt;=44)]&lt;/code&gt; 可以为每个视图设置一些属性或者关系，写一个紧跟view后的括号集合，支持宽高，优先级，和其它视图之间的关系。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[view@20]&lt;/code&gt; 可以设置视图的约束的优先级，以@开头，取值范围(0 1000]。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[view1]-20-[view2]&lt;/code&gt; 可以指定view之间的水平或者垂直间距，写在 - 对 - 即可。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[view1][view2]&lt;/code&gt; 如果 - 省略则他们之间的距离为0。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[flexibleButton(&amp;gt;=70,&amp;lt;=100)]&lt;/code&gt; 多个条件之间用,连接并且之间不能有空格。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;注意事项&quot;&gt;注意事项&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用时，必须把view的&lt;code class=&quot;highlighter-rouge&quot;&gt;translatesAutoresizingMaskIntoConstraints&lt;/code&gt;属性设置为NO，否则约束可能更预期不一致。这是一个历史遗留的问题，由于在&lt;code class=&quot;highlighter-rouge&quot;&gt;AutoLayout&lt;/code&gt;诞生以前一直使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Autoresizing&lt;/code&gt;来控制布局&lt;/li&gt;
+  &lt;li&gt;重写&lt;code class=&quot;highlighter-rouge&quot;&gt;updateConstraints()&lt;/code&gt;方法，在里面计算约束，然后调用&lt;code class=&quot;highlighter-rouge&quot;&gt;setNeedsUpdateConstraints()&lt;/code&gt;触发更新约束。&lt;/li&gt;
+  &lt;li&gt;系统计算布局顺序:
+    &lt;ul&gt;
+      &lt;li&gt;updateConstraints()&lt;/li&gt;
+      &lt;li&gt;layoutSubviews()&lt;/li&gt;
+      &lt;li&gt;drawRect(_:)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;系统计算布局顺序参考
+  &lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/autolayout.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;参考链接：
+  &lt;a href=&quot;http://blog.wangruofeng007.com/blog/2017/03/02/vflshen-ru-qian-chu/&quot;&gt;VFL深入浅出&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 06 Dec 2017 09:05:14 +0800</pubDate>
+        <pubDate>Fri, 15 Dec 2017 13:45:14 +0800</pubDate>
         <link>http://localhost:4000/2017/12/NSLayoutConstraint/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/12/NSLayoutConstraint/</guid>
         

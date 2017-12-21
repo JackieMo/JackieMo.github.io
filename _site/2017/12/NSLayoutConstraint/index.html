@@ -146,7 +146,7 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-12-06 09:05:14 +0800" itemprop="datePublished" class="post-meta__date date">2017-12-06</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2017-12-15 13:45:14 +0800" itemprop="datePublished" class="post-meta__date date">2017-12-15</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
     <h1 class="post-title">NSLayoutConstraint</h1>
   </header>
@@ -170,7 +170,9 @@
 
 <p>Auto Layout 中约束对应的类为 NSLayoutConstraint，一个 NSLayoutConstraint 实例代表一条约束。</p>
 
-<p>NSLayoutConstraint有两个方法，我们主要介绍 constraintWithItem:也是最常用的：</p>
+<p>NSLayoutConstraint有两个方法。</p>
+
+<h4 id="第一种-constraintwithitem也是最常用的">第一种 constraintWithItem:也是最常用的：</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>+(instancetype)constraintWithItem:(id)view1 
                         attribute:(NSLayoutAttribute)attr1 
@@ -249,11 +251,90 @@
   </li>
 </ul>
 
+<h4 id="第二种使用比较冷门的vflvisual-format-language本质是是基于自动布局autolayout">第二种，使用比较冷门的VFL(Visual Format Language)，本质是是基于自动布局(AutoLayout)。</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
++ (NSArray&lt;__kindof NSLayoutConstraint *&gt; *)constraintsWithVisualFormat:(NSString *)format 
+                                                                options:(NSLayoutFormatOptions)opts 
+                                                                metrics:(nullable NSDictionary&lt;NSString *,id&gt; *)metrics 
+                                                                  views:(NSDictionary&lt;NSString *, id&gt; *)views;
+ 
+</code></pre>
+</div>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>_volumeImageView.translatesAutoresizingMaskIntoConstraints = NO;
+NSArray *imageViewConstrainH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-60-[_volumeImageView]-60-|" 
+                                                                       options:0 
+                                                                       metrics:0 
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstrainH];
+NSArray *imageViewConstaintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[_volumeImageView(150)]" 
+                                                                       options:0 
+                                                                       metrics:0
+                                                                         views:NSDictionaryOfVariableBindings(_volumeImageView)];
+[self.view addConstraints:imageViewConstaintV];
+
+</code></pre>
+</div>
+
+<p>参数：</p>
+
+<ul>
+  <li>format：指定约束的格式。更多信息，在<a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/index.html">Auto Layout Guide</a>查看<a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html">Visual Format Language</a></li>
+  <li>opts：描述在视觉格式化字符串中的布局属性和方向</li>
+  <li>metrics：将出现在视觉格式化字符串的常量字典。字典的Keys必须是在出现在视觉格式化字符串的字符串类型，对应的values必须是NSNumber对象</li>
+  <li>views：出现的视觉格式化字符串的字典view，所有的Keys必须是使用在视觉格式化字符串的字符串类型，对应的values必须是view对象。</li>
+  <li>返回值：一个约束组合的数组，像视觉格式化字符串描述的一样表述了在提供的视图和它们的父视图之间的关系。所有的约束以在视觉格式化字符串被指定的约束顺序一致。</li>
+</ul>
+
+<h4 id="实践">实践</h4>
+
+<ul>
+  <li>每条约束格式字符串分水平(H，可省略)和垂直方向(V)。</li>
+  <li><code class="highlighter-rouge">|</code> 代表父视图。</li>
+  <li><code class="highlighter-rouge">-</code> 代表标准间距，两个子视图直接的值是8，与父视图之间的值是16。</li>
+  <li><code class="highlighter-rouge">[view]</code> 每个视图必须用[]包裹起来，否则语法错误。</li>
+  <li><code class="highlighter-rouge">[view(&gt;=44)]</code> 可以为每个视图设置一些属性或者关系，写一个紧跟view后的括号集合，支持宽高，优先级，和其它视图之间的关系。</li>
+  <li><code class="highlighter-rouge">[view@20]</code> 可以设置视图的约束的优先级，以@开头，取值范围(0 1000]。</li>
+  <li><code class="highlighter-rouge">[view1]-20-[view2]</code> 可以指定view之间的水平或者垂直间距，写在 - 对 - 即可。</li>
+  <li><code class="highlighter-rouge">[view1][view2]</code> 如果 - 省略则他们之间的距离为0。</li>
+  <li><code class="highlighter-rouge">[flexibleButton(&gt;=70,&lt;=100)]</code> 多个条件之间用,连接并且之间不能有空格。</li>
+</ul>
+
+<h4 id="注意事项">注意事项</h4>
+
+<ul>
+  <li>使用时，必须把view的<code class="highlighter-rouge">translatesAutoresizingMaskIntoConstraints</code>属性设置为NO，否则约束可能更预期不一致。这是一个历史遗留的问题，由于在<code class="highlighter-rouge">AutoLayout</code>诞生以前一直使用<code class="highlighter-rouge">Autoresizing</code>来控制布局</li>
+  <li>重写<code class="highlighter-rouge">updateConstraints()</code>方法，在里面计算约束，然后调用<code class="highlighter-rouge">setNeedsUpdateConstraints()</code>触发更新约束。</li>
+  <li>系统计算布局顺序:
+    <ul>
+      <li>updateConstraints()</li>
+      <li>layoutSubviews()</li>
+      <li>drawRect(_:)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>系统计算布局顺序参考
+  <img src="http://p0bkxzmll.bkt.clouddn.com/autolayout.png" alt="" /></p>
+
+<p>参考链接：
+  <a href="http://blog.wangruofeng007.com/blog/2017/03/02/vflshen-ru-qian-chu/">VFL深入浅出</a></p>
 
   </section>
 </article>
 
 <section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/12/itunes/" title="link to 解决 iTunes 12.7 无法下载IPA包">解决 iTunes 12.7 无法下载IPA包</a></h2>
+       <p class="excerpt">升级 iTunes 12.7 之后，发现没有了App Store，这也意味着不能下载IPA包了。要想下载IPA包，只能降级了。降级步骤1.下载 iTunes 12.6.32.关闭某些应用(Xcode)3.安装 iTunes 12.6.34.打开 iTunes 后可能出现报错解决方法：到 ~/Music 目录下删除 iTunes 目录，重新打开即可。&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-12-21 09:39:14 +0800" class="post-list__meta--date date">2017-12-21</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/12/itunes/>继续阅读</a></div>
+   </div>
    
    
    

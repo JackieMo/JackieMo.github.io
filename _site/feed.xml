@@ -5,9 +5,104 @@
     <description>读万卷书 行万里路</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Dec 2017 11:12:13 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Dec 2017 11:12:13 +0800</lastBuildDate>
+    <pubDate>Wed, 03 Jan 2018 17:43:13 +0800</pubDate>
+    <lastBuildDate>Wed, 03 Jan 2018 17:43:13 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>UML类图</title>
+        <description>&lt;h3 id=&quot;从一个示例开始&quot;&gt;从一个示例开始&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/UML%E7%A4%BA%E4%BE%8B.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;车的类图结构为«abstract»，表示车是一个抽象类&lt;/li&gt;
+  &lt;li&gt;它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用空心箭头的虚线表示&lt;/li&gt;
+  &lt;li&gt;小汽车与SUV之间的关系也是继承关系，它们之间的关系为泛化关系，使用带空心箭头的实线的表示&lt;/li&gt;
+  &lt;li&gt;小汽车与发动机之间是组合关系，使用带实心箭头的实线表示&lt;/li&gt;
+  &lt;li&gt;学生与班级之间是聚合关系，使用带空心箭头的实线表示&lt;/li&gt;
+  &lt;li&gt;学生与身份证之间为关联关系，使用一根实线表示&lt;/li&gt;
+  &lt;li&gt;学生上学需要用到自行车，与自行车是一种依赖关系，使用带箭头的虚线表示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面我们将介绍这六种关系&lt;/p&gt;
+
+&lt;h3 id=&quot;类之间的关系&quot;&gt;类之间的关系&lt;/h3&gt;
+
+&lt;h4 id=&quot;泛化关系generalization&quot;&gt;泛化关系(generalization)&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;类的继承结构表现在UML中为：泛化(generalize)与实现(realize)
+
+继承关系为is-a的关系；两个对象之间如果可以用is-a来表示，就是继承关系
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;eg: 自行车是车、猫是动物。汽车在现实中有实现，可用汽车定义具体的对象；汽车与SUV之间为泛化关系&lt;/p&gt;
+
+&lt;p&gt;泛化关系用一条带空心箭头的实线表示；如下图表示（A继承自B）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/realize.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：最终代码中，泛化关系表现为继承非抽象类&lt;/p&gt;
+
+&lt;h4 id=&quot;实现关系realize&quot;&gt;实现关系(realize)&lt;/h4&gt;
+
+&lt;p&gt;实现关系用一条带空心箭头的虚线表示&lt;/p&gt;
+
+&lt;p&gt;eg：“车”为一个抽象概念，在现实中无法直接用来定义对象；只有指明具体的子类（汽车还是自行车），才可以用来定义对象（“车”这个类在C++中用抽象类表示，在JAVA中有接口这个概念，更容易理解）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/%E5%AE%9E%E7%8E%B0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：最终代码中，泛化关系表现为继承抽象类&lt;/p&gt;
+
+&lt;h4 id=&quot;聚合关系aggregation&quot;&gt;聚合关系(aggregation)&lt;/h4&gt;
+
+&lt;p&gt;聚合关系用一条带空心菱形箭头的实线表示，如下图表示A聚合到B上，或者说B由A组成&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/aggregation.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;聚合关系用于表示实体对象之间的关系，表示整体有部分构成的语义；例如一个部门由多个员工组成；
+与组合关系不同的是，整体和部分不是强依赖的，即使整体不存在了，部分仍然存在；例如，部门撤销了，人员不会消失，他们仍然存在；&lt;/p&gt;
+
+&lt;h4 id=&quot;组合关系composition&quot;&gt;组合关系(composition)&lt;/h4&gt;
+
+&lt;p&gt;组合关系用一条带实心菱形箭头的实线表示，如下图表示A组成B，或者B由A组成；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/zuhe.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;与聚合关系一样，组合关系同样表示整体有部分构成的语义；比如公司由多个部门组成；&lt;/p&gt;
+
+&lt;p&gt;但组合关系是一种强依赖的特殊聚合关系，如果整体不存在了，则部分也不存在了；例如，公司不存在了，部门也将不存在了。&lt;/p&gt;
+
+&lt;h4 id=&quot;关联关系association&quot;&gt;关联关系(association)&lt;/h4&gt;
+
+&lt;p&gt;关联关系是用一条直线表示的；它描述不同类的对象之间的结构关系；它是一种静态关系，通常与运行状态无关，一般由常识等因素决定；它一般用来定义对象之间静态的、天然的结构；所以，关联关系是一种“强关联”的关联&lt;/p&gt;
+
+&lt;p&gt;不如，乘车人和车票之间就是一种关联关系；学生和学校就是一种关联关系；&lt;/p&gt;
+
+&lt;p&gt;关联关系默认不强调方向，表示对象间相互知道；如果特别强调方向，如下图，表示A知道B，但B不知道A；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/association.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：在最终代码中，关联对象通常是以成员变量的形式实现的。&lt;/p&gt;
+
+&lt;h4 id=&quot;依赖关系dependency&quot;&gt;依赖关系(dependency)&lt;/h4&gt;
+
+&lt;p&gt;依赖关系是用一条带箭头的虚线表示的；如下图表示A依赖于B；它描述一个对象在运行期间会用到另一个对象的关系；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p0bkxzmll.bkt.clouddn.com/dependency.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;与关联关系不同的是，它是一种临时性的关系，通常在运行期间产生，并且随着运行时的变化；依赖关系也可能发生变化；&lt;/p&gt;
+
+&lt;p&gt;显然，依赖也有方向，双向依赖是一种非常糟糕的结构，我们总是应该保持单向依赖，杜绝双向依赖的产生；&lt;/p&gt;
+
+&lt;p&gt;注：在最终代码中，依赖关系体现为类构造方法以及类方法的传入参数，箭头的方向为调用关系；依赖关系除了临时知道对方外，还“使用”对方的方法和属性；&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Jan 2018 15:21:34 +0800</pubDate>
+        <link>http://localhost:4000/2018/01/UML%E7%B1%BB%E5%9B%BE/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/UML%E7%B1%BB%E5%9B%BE/</guid>
+        
+        
+      </item>
     
       <item>
         <title>解决 iTunes 12.7 无法下载IPA包</title>

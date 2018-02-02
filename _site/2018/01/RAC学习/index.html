@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>RAC学习</title>
+  <meta name="description" content="一、什么是RAC">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RAC学习">
+  <meta name="twitter:description" content="一、什么是RAC">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RAC学习">
+  <meta property="og:description" content="一、什么是RAC">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/01/RAC%E5%AD%A6%E4%B9%A0/">
+  <link rel="alternate" type="application/rss+xml" title="JackieMo" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 JackieMo 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="JackieMo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for JackieMo" class="blog-button">JackieMo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">读万卷书 行万里路</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="http://mozj.info/" target="_blank" title="About Me">About</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/Ar-H14" title="@Ar-H14 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/JackieMo" title="@JackieMo 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/Mozj2017" title="@Mozj2017" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:mozj2017@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-01-17 10:55:34 +0800" itemprop="datePublished" class="post-meta__date date">2018-01-17</time> &#8226; <span class="post-meta__tags tags"></span>
+    </div>
+    <h1 class="post-title">RAC学习</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="一什么是rac">一、什么是RAC</h3>
+
+<ul>
+  <li>github开源的一个应用于iOS和OS x开发的框架。</li>
+  <li>RAC是一个函数响应式编程框架。</li>
+  <li>RAC使用signal信号和signalProducer信号提供者类型来辨识事件流，也就是使用信号代替事件流。</li>
+  <li>RAC把所有的事件流统一处理</li>
+  <li>RAC可以很简单的声明一个链条结合在一起，减少代码的耦合</li>
+</ul>
+
+<p>在iOS开发中,不同的响应事件采用不同的方式来处理，比如action、delegate、KVO、callback等，并没有一个统一的处理方式。而ReactiveCocoa为事件定义了一个标准接口，提供统一的消息传递机制，并且减少可变变量的定义。RAC提供Signals捕获当前值和将来值。通过链接（chaining），组合（combining）和对Signals做出反应（reacting）。我们不必频繁地观察并更新值，而是声明式编写软件。</p>
+
+<p>总的来说： RAC统一了对KVO、UI Event、Network request、Async work的处理，因为它们本质上都是值的变化(Values over time)</p>
+
+<h3 id="二使用rac">二、使用RAC</h3>
+
+<h4 id="1target-action">1、target-action</h4>
+
+<p>RAC最基本的入门使用技巧就是对事件的监听。</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>
+<span class="p">[[</span><span class="n">self</span><span class="p">.</span><span class="n">textField</span> <span class="nf">rac_signalForControlEvents</span><span class="p">:</span><span class="n">UIControlEventEditingChanged</span><span class="p">]</span> <span class="nf">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"change"</span><span class="p">);</span>
+<span class="p">}];</span>
+
+</code></pre>
+</div>
+
+<h4 id="2代理">2、代理</h4>
+
+<p>用RAC写代理是有局限的，它只能实现返回值为void的代理方法。</p>
+
+<p>首先我们要明白我们为什么要用RAC写代理？答：简化代码！是的，的确为了简化代码。</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithTitle</span><span class="p">:</span><span class="s">@"标题"</span> <span class="nf">message</span><span class="p">:</span><span class="s">@"内容"</span> <span class="n">delegate</span><span class="o">:</span><span class="n">self</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="s">@" YES"</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="s">@"NO"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">self</span> <span class="nf">rac_signalForSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">alertView</span><span class="p">:</span><span class="nf">clickedButtonAtIndex</span><span class="p">:)</span> <span class="nf">fromProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">UIAlertViewDelegate</span><span class="p">)]</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="n">RACTuple</span> <span class="o">*</span><span class="n">tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span><span class="n">tuple</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span><span class="n">tuple</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span><span class="n">tuple</span><span class="p">.</span><span class="n">third</span><span class="p">);</span>
+<span class="p">}];</span>
+<span class="p">[</span><span class="n">alertView</span> <span class="nf">show</span><span class="p">];</span>
+
+
+</code></pre>
+</div>
+
+<h4 id="3通知">3、通知</h4>
+
+<p>首先，在某个页面中我们需要发出通知，治理就是最基本的通知的写法。发送名为notificationData的通知并传送一个数组dataArray。</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>
+<span class="p">[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="n">postNotificationName</span><span class="o">:</span><span class="s">@"notificationData"</span> <span class="n">object</span><span class="o">:</span><span class="n">dataArray</span><span class="p">];</span>
+
+</code></pre>
+</div>
+
+<p>在接受的页面我们需要增加观察者并接受数组，这是我们的RAC就派上用场了。</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>
+<span class="p">[[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">rac_addObserverForName</span><span class="p">:</span><span class="s">@"notificationData"</span> <span class="nf">object</span><span class="p">:</span><span class="nf">nil</span><span class="p">]</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="n">NSNotification</span> <span class="o">*</span><span class="n">notification</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">notification</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">notification</span><span class="p">.</span><span class="n">object</span><span class="p">);</span>
+<span class="p">}];</span>
+
+</code></pre>
+</div>
+
+<p>当这个页面监听到这个通知的时候他就会执行block中的方法，当然这里的参数改成id x也是可以的，这里用NSNotification主要是强调它的类型。值得一提的是，RAC中的通知不需要remove observer，因为在rac_add方法中它已经写了remove。</p>
+
+<h4 id="4kvo">4、KVO</h4>
+<p>RAC中的KVO大部分都是宏定义，所以代码异常简洁，简单来说就是RACObserve(TARGET, KEYPATH)这种形式，TARGET是监听目标，KEYPATH是要观察的属性值，这里举一个很简单的例子，如果UIScrollView滚动则输出success。</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="n">UIScrollView</span> <span class="o">*</span><span class="n">scrolView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIScrollView</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">)];</span>
+<span class="n">scrolView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">);</span>
+<span class="n">scrolView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">greenColor</span><span class="p">];</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">scrolView</span><span class="p">];</span>
+<span class="p">[</span><span class="n">RACObserve</span><span class="p">(</span><span class="n">scrolView</span><span class="p">,</span> <span class="n">contentOffset</span><span class="p">)</span> <span class="nf">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"success"</span><span class="p">);</span>
+<span class="p">}];</span>
+
+</code></pre>
+</div>
+
+<h3 id="三rac的核心概念">三、RAC的核心概念</h3>
+
+<h4 id="1racstream">1、RACStream</h4>
+<p>ReactiveCocoa的核心组件是RACStream， RACStream作为一个描述的抽象类，是任意对象的值的一个序列(any series of object values)，stream表示流，流驱动事件，一个流驱动响应另一个流，所有的流连串起来，形成事件流，类似流驱动事件，RACStream的两个子类分别是<strong>RACSignal</strong>和<strong>RACSequence</strong></p>
+
+<h4 id="2racsignal">2、RACSignal</h4>
+
+<p>signal即信号，信号也是一种流，信号需要订阅，如同报纸一样，只有你订阅了，才会把报纸送到订阅者那里，没有订阅就没有实际意义。专业术语称：Hot Observable（热信号）和Cold Observable（冷信号），两者的区别是：</p>
+
+<blockquote>
+  <ol>
+    <li>Hot Observable是主动的，尽管你并没有订阅事件，但是它会时刻推送，就像鼠标移动；而Cold Observable是被动的，只有当你订阅的时候，它才会发布消息。</li>
+    <li>Hot Observable可以有多个订阅者，是一对多，集合可以与订阅者共享信息；而Cold Observable只能一对一，当有不同的订阅者，消息是重新完整发送</li>
+  </ol>
+</blockquote>
+
+<p>总的来说：有subscriber(订阅者)的signal为热信号，没有subscriber的signal为冷信号</p>
+
+<p>RACSignal可以向订阅者subscriber发送三种不同类型的事件：</p>
+
+<ul>
+  <li>next:这个主要起到传值的作用，这个值可以为nil</li>
+  <li>error:发送一个NSError对象,通知订阅者信号发送了错误</li>
+  <li>completed:表明信号已经结束，并且不会有新的值传递给订阅者</li>
+</ul>
+
+<p>一个生命周期的Signal可以发送任意多个“next”事件，和一个“error”或者“completed”事件（“error”和“completed”只可能出现一种）</p>
+
+<p>对于RACSignal来说，最核心的方法即：-subscribe:。通过查看RACSignal源码可以发现，这个是一个抽象方法，需要其子类去实现：</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>
+<span class="k">-</span> <span class="p">(</span><span class="n">RACDisposable</span> <span class="o">*</span><span class="p">)</span><span class="nf">subscribe</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">RACSubscriber</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">subscriber</span> <span class="p">{</span>
+	<span class="n">NSCAssert</span><span class="p">(</span><span class="nb">NO</span><span class="p">,</span> <span class="s">@"This method must be overridden by subclasses"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/02/%E4%B8%80%E9%94%AEdump/" title="link to 一键dump">一键dump</a></h2>
+       <p class="excerpt">1、环境配置首先在手机和mac上安装frida  mac安装方法：sudo pip install frida  越狱手机（好像要挂vpn）  非越狱手机两个端都安装完成之后可以用 USB 连接手机在 mac 终端中通过frida-ps -U命令测试，若输出手机上安装的 App 名称则说明安装成功。如果mac端报如下错:Uninstalling a distutils installed project (six) has been deprecated and will be remov...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-02-02 10:22:34 +0800" class="post-list__meta--date date">2018-02-02</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/02/%E4%B8%80%E9%94%AEdump/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/01/UML%E7%B1%BB%E5%9B%BE/" title="link to UML类图">UML类图</a></h2>
+       <p class="excerpt">从一个示例开始  车的类图结构为«abstract»，表示车是一个抽象类  它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用空心箭头的虚线表示  小汽车与SUV之间的关系也是继承关系，它们之间的关系为泛化关系，使用带空心箭头的实线的表示  小汽车与发动机之间是组合关系，使用带实心箭头的实线表示  学生与班级之间是聚合关系，使用带空心箭头的实线表示  学生与身份证之间为关联关系，使用一根实线表示  学生上学需要用到自行车，与自行车是一种依赖关系，使用带箭头的虚线表示下面我们将介...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-01-03 15:21:34 +0800" class="post-list__meta--date date">2018-01-03</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/01/UML%E7%B1%BB%E5%9B%BE/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2018/01/RAC%E5%AD%A6%E4%B9%A0/";
+        this.page.identifier = "/2018/01/RAC%E5%AD%A6%E4%B9%A0/";
+    };
+
+    var disqus_shortname = 'mozj';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright"> &copy; 2018 JackieMo All rights reserved.</span>
+        <span class="footer__copyright"> <a href="https://github.com/onevcat/vno">Vno-based</a> theme by <a href="https://github.com/onevcat">onevcat</a></span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

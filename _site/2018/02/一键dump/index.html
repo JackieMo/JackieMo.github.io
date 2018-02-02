@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>一键dump</title>
+  <meta name="description" content="1、环境配置">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="一键dump">
+  <meta name="twitter:description" content="1、环境配置">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="一键dump">
+  <meta property="og:description" content="1、环境配置">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/02/%E4%B8%80%E9%94%AEdump/">
+  <link rel="alternate" type="application/rss+xml" title="JackieMo" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 JackieMo 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="JackieMo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for JackieMo" class="blog-button">JackieMo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">读万卷书 行万里路</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="http://mozj.info/" target="_blank" title="About Me">About</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/Ar-H14" title="@Ar-H14 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/JackieMo" title="@JackieMo 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/Mozj2017" title="@Mozj2017" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:mozj2017@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-02-02 10:22:34 +0800" itemprop="datePublished" class="post-meta__date date">2018-02-02</time> &#8226; <span class="post-meta__tags tags"></span>
+    </div>
+    <h1 class="post-title">一键dump</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="1环境配置">1、环境配置</h3>
+
+<p>首先在手机和mac上安装<a href="https://www.frida.re">frida</a></p>
+
+<ul>
+  <li>mac安装方法：<code class="highlighter-rouge">sudo pip install frida</code></li>
+  <li><a href="https://www.frida.re/docs/ios/#with-jailbreak">越狱手机</a>（好像要挂vpn）</li>
+  <li><a href="https://www.frida.re/docs/ios/#without-jailbreak">非越狱手机</a></li>
+</ul>
+
+<p>两个端都安装完成之后可以用 USB 连接手机在 mac 终端中通过<code class="highlighter-rouge">frida-ps -U</code>命令测试，若输出手机上安装的 App 名称则说明安装成功。</p>
+
+<p>如果mac端报如下错:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Uninstalling a distutils installed project (six) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
+
+</code></pre>
+</div>
+
+<p>使用如下命令安装即可:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo pip install frida –upgrade –ignore-installed six
+
+</code></pre>
+</div>
+
+<h3 id="2一键砸壳">2、一键砸壳</h3>
+
+<ul>
+  <li>下载砸壳工具<a href="https://github.com/AloneMonkey/frida-ios-dump.git">frida-ios-dump</a>， frida-ios-dump 要求通过 USB 连接手机</li>
+  <li>有两个工具包都带了 iproxy
+    <ul>
+      <li>libimobiledevice. 安装命令：<code class="highlighter-rouge">brew install libimobiledevice</code></li>
+      <li>usbmuxd. 安装命令：<code class="highlighter-rouge">brew install usbmuxd </code></li>
+    </ul>
+  </li>
+  <li>安装完成之后在终端中通过 iproxy 命令映射端口：<code class="highlighter-rouge">iproxy 2222 22</code></li>
+  <li>然后在另一个终端窗口中通过 <code class="highlighter-rouge">ssh -p 2222 root@localhost</code> 进行连接即可。</li>
+  <li><code class="highlighter-rouge">cd</code>到frida-ios-dump脚本所在的文件夹通过<code class="highlighter-rouge">./dump.py app名称</code> 命令即可进行砸壳。脚本运行完成之后会在文件夹中生成一个已砸壳的 ipa 文件，非常地方便。</li>
+</ul>
+
+<h5 id="参考文章">参考文章：</h5>
+<ul>
+  <li><a href="http://www.alonemonkey.com/2018/01/30/frida-ios-dump/">一条命令完成砸壳</a></li>
+  <li><a href="https://aberlt.github.io/2017/12/14/%E8%AE%B0%E7%A0%B8%E5%A3%B3%E5%B7%A5%E5%85%B7-frida-ios-dump-%E7%9A%84%E4%BD%BF%E7%94%A8/">记砸壳工具 frida-ios-dump 的使用</a></li>
+</ul>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/01/RAC%E5%AD%A6%E4%B9%A0/" title="link to RAC学习">RAC学习</a></h2>
+       <p class="excerpt">一、什么是RAC  github开源的一个应用于iOS和OS x开发的框架。  RAC是一个函数响应式编程框架。  RAC使用signal信号和signalProducer信号提供者类型来辨识事件流，也就是使用信号代替事件流。  RAC把所有的事件流统一处理  RAC可以很简单的声明一个链条结合在一起，减少代码的耦合在iOS开发中,不同的响应事件采用不同的方式来处理，比如action、delegate、KVO、callback等，并没有一个统一的处理方式。而ReactiveCocoa为事件...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-01-17 10:55:34 +0800" class="post-list__meta--date date">2018-01-17</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/01/RAC%E5%AD%A6%E4%B9%A0/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2018/02/%E4%B8%80%E9%94%AEdump/";
+        this.page.identifier = "/2018/02/%E4%B8%80%E9%94%AEdump/";
+    };
+
+    var disqus_shortname = 'mozj';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright"> &copy; 2018 JackieMo All rights reserved.</span>
+        <span class="footer__copyright"> <a href="https://github.com/onevcat/vno">Vno-based</a> theme by <a href="https://github.com/onevcat">onevcat</a></span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
